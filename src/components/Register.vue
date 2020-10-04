@@ -50,12 +50,12 @@ export default{
   },
   data(){
         return{
-            accountName:'dsfg',
-            email:'fdsgsdf@gmail.com',
-            firstName:'sdf',
-            surName:'sdfs',
-            password:'sdffs',
-            mobileNumber:'123123',
+            accountName:'',
+            email:'',
+            firstName:'',
+            surName:'',
+            password:'',
+            mobileNumber:'',
             phoneCountryCode:'',
             phoneNumber:'',
             countryISO:'',
