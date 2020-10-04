@@ -1,42 +1,124 @@
 <template>
-  <form
-    onsubmit="submitForm(event)"
+  <form    
+    v-on:submit.prevent
     class="cta-input mt-4 mb-2 p-0"
     style="border-style: none;"
   >
     <div id="input-list">
                         <label class="block-41__li-heading mt-2">Account Name</label>
-                        <input type="email" class="cta-input__input flex-grow-1 mb-3 input-style" placeholder="Account Name" required>
+                        <input type="text" class="cta-input__input flex-grow-1 mb-3 input-style" v-model="accountName" placeholder="Account Name" required>
                         <label class="block-41__li-heading mt-2">Work Email</label>
-                        <input type="email" class="cta-input__input flex-grow-1 mb-3 input-style" placeholder="Work Email" required>
+                        <input type="email" class="cta-input__input flex-grow-1 mb-3 input-style" v-model="email" placeholder="Work Email" required>
                         <label class="block-41__li-heading mt-2">First Name</label>
-                        <input type="test" class="cta-input__input flex-grow-1  mb-3 input-style" placeholder="First Name" required>
+                        <input type="test" class="cta-input__input flex-grow-1  mb-3 input-style" v-model="firstName" placeholder="First Name" required>
                         <label class="block-41__li-heading mt-2">Last Name</label>
-                        <input type="text" class="cta-input__input flex-grow-1  mb-3 input-style" placeholder="Last Name" required>
+                        <input type="text" class="cta-input__input flex-grow-1  mb-3 input-style" v-model="surName" placeholder="Last Name" required>
                         <label class="block-41__li-heading mt-2">Password</label>
-                        <input type="password" class="cta-input__input flex-grow-1  mb-3 input-style" placeholder="Password" required>
-                        <label class="block-41__li-heading mt-2">MobilePhone Number</label>
-                        <input type="text" class="cta-input__input flex-grow-1  mb-3 input-style" placeholder="MobilePhone Number" required>
-                        <label class="block-41__li-heading mt-2">Country Code</label>
-                        <input type="text" class="cta-input__input flex-grow-1  mb-3 input-style" placeholder="Country Code" required>
+                        <input type="password" class="cta-input__input flex-grow-1  mb-3 input-style" v-model="password" placeholder="Password" required>
+                        <label class="block-41__li-heading mt-2">MobilePhone Number</label>                        
+                        <input type="text" class="cta-input__input flex-grow-1  mb-3 input-style" v-model="mobileNumber" placeholder="MobilePhone Number" required>
                         <label class="block-41__li-heading mt-2">Phone Number</label>
-                        <input type="text" class="cta-input__input flex-grow-1  mb-3 input-style" placeholder="Phone Number" required>
-                        <label class="block-41__li-heading mt-2">Country</label>
-                        <input type="text" class="cta-input__input flex-grow-1  mb-3 input-style" placeholder="Country" required>
-                        <label class="block-41__li-heading mt-2">Plan</label>
-                        <input type="text" class="cta-input__input flex-grow-1  mb-3 input-style" placeholder="Plan" required>
+                        <VueTelInput wrapperClasses="input-style" inputClasses="cta-input__input flex-grow-1 input-style" @input="onPhoneNumberInput"/>
+                                                <label class="block-41__li-heading mt-2">Plan</label>
+                        <select class="cta-input__input flex-grow-1  mb-3 input-style" v-model="planID">
+                          <option disabled value="">Please select one</option>
+                          <option v-bind:key="option.plan_id" v-for="option in planList" v-bind:value="option.plan_id">
+                            {{ `${option.plan_name} /  $${option.price_usd_per_month}`}}
+                          </option>
+                        </select>                        
                       </div>
     <label class="checkbox-container mt-2"
       >I agree to Rockset's Terms of Service and Privacy Policy
       <input type="checkbox" />
       <span class="checkmark"></span>
     </label>
-    <button class="cta-input__btn mt-2">Get Started Free</button>
+    <button @click="onSignUp" class="cta-input__btn mt-2">Get Started Free</button>
   </form>
 </template>
 
 <script>
+import {onMounted} from 'vue';
+import usePlanList from "../composable/use-plan-list";
+import useSignUp from "../composable/use-signup";
+import VueTelInput from "./telInput/vue-tel-input"
 export default{
+  components:{
+    VueTelInput
+  },
+  data(){
+        return{
+            accountName:'dsfg',
+            email:'fdsgsdf@gmail.com',
+            firstName:'sdf',
+            surName:'sdfs',
+            password:'sdffs',
+            mobileNumber:'123123',
+            phoneCountryCode:'',
+            phoneNumber:'',
+            countryISO:'',
+            planID:'',            
+        }
+    },
+  setup(){
+    const {loadPlan, planList, error, fetching } = usePlanList();
+    onMounted(()=>{
+      loadPlan();
+    });
+
+    const {doSignUp, data:signupResp, error:signupError, fetching:signupFetching } = useSignUp();
+    return {
+        loadPlan,
+        planList,        
+        planError:error,
+        planFetching:fetching,
+        doSignUp,
+        signupResp,
+        signupError,
+        signupFetching
+    };
+    
+
+  },
+
+  methods:{
+    onPhoneNumberInput(formattedNumber, inputNumber) {
+        if(inputNumber !== undefined){
+          const { number, valid, country } = inputNumber;
+          this.phoneNumber = number.international;        
+          this.phoneCountryCode = country.dialCode;
+          this.countryISO = country.iso2;
+          console.log(this.phoneNumber);
+          console.log(this.phoneCountryCode);
+          console.log(this.countryISO);         
+          console.log(number, valid, country);
+        }
+      },
+      onSignUp(event){
+        event.preventDefault();
+        console.log("singup");
+        this.doSignUp({surname: this.surName,
+                  first_name:this.firstName,
+                  plan_id:this.planID,
+                  country:this.firstName,
+                  phone_number:this.phoneNumber,
+                  password:this.password,
+                  email_address:this.email,
+                  account_name:this.accountName}
+                  );
+      }
+  },
+ 
+  watch:{
+  
+    planError(error){
+      console.log(error);
+    },
+    planList(newPlanList) {
+        for(let i = 0; i < newPlanList.length; i++)
+          console.log(newPlanList[i].plan_name);
+          console.log(newPlanList);
+    }
+  }
 }
 </script>
 
