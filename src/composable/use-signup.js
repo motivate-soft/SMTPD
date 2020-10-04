@@ -3,9 +3,8 @@ import useFetch from './use-fetch';
 import Config from '../config';
 
 export default function() {
-  let response = reactive({data: null, error: null, fetching: false});
-  const doSignUp = async (options) => {
-    console.log(options);
+  let responseValue = reactive({signupResp: null, signupError: null, signupFetching: false});
+  const doSignUp = async (options) => {    
     const {response, error, fetchData, fetching} = useFetch(
       `${Config.apiURL}/account`,
       {
@@ -17,10 +16,10 @@ export default function() {
         body:JSON.stringify(options)
       }
     );
-    fetchData();
-    response.data = response;
-    response.error = error;
-    response.fetching = fetching;
+    fetchData();        
+    responseValue.signupResp = response;
+    responseValue.signupError = error;
+    responseValue.signupFetching = fetching;    
   };
-  return {doSignUp, ...toRefs(response)};
+  return {doSignUp, ...toRefs(responseValue)};
 }

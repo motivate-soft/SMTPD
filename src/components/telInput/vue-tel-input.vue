@@ -565,10 +565,8 @@ export default {
 
 <style src="../../assets/sprite.css"></style>
 <style>
-.vue-tel-input {
-  border-radius: 3px;
-  display: flex;
-  border: 1px solid #bbb;
+.vue-tel-input {  
+  display: flex;  
   text-align: left;
 }
 .vue-tel-input.disabled .selection,
