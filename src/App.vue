@@ -29,7 +29,7 @@
         </div>
         <div
           class="col-lg-6 px-0 background-color  d-flex"
-          style="align-content: center; flex-wrap: wrap;"
+          style="align-items:center"
         >
           <div class="content-block">
             <div class="content-block">
