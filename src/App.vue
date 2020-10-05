@@ -9,7 +9,7 @@
               <div class="container">
                 <div class="row flex-row-reverse">
                   <div class="col-lg-12 px-5 px px-xl-5 py-5 text-left">
-                    <img src="../public/media/mark.png" class="pb-5">
+                    <img src="./assets/mark.png" class="pb-5">
                     <h4 class="content-block__title mb-0">
                       Get started free
                     </h4>
@@ -31,7 +31,7 @@
           class="col-lg-6 px-0 background-color  d-flex"
           style="align-content: center; flex-wrap: wrap;"
         >
-          <div class="content-block pt-10">
+          <div class="content-block">
             <div class="content-block">
               <!--3. Features 2 =================================== -->
               <div
@@ -43,7 +43,7 @@
                     class="row px-5 align-items-center  flex-lg-row justify-content-center"
                   >
                     <!-- CONTENT -->
-                    <div class="col-lg-11 pt-10">
+                    <div class="col-lg-11">
                       <Rightsideup />
                     </div>
                     <div class="col-lg-11 pt-5">
@@ -73,8 +73,46 @@ export default {
   },
 };
 </script>
+<style src="./assets/app.css"></style>
 
-<style scoped>
-
-
-</style>
+<style>
+    .input-style {
+        background-color: rgb(235, 242, 245);
+        width: 100%;
+        border-bottom: 2px solid grey;
+      }
+      .input-style:focus {
+        border-bottom: 2px solid grey !important;
+      }
+      .background-color {
+        background: #7540ee;
+      }
+      .block__paragraph {
+        font-size: 1.1rem;
+        line-height: 1.5;
+        opacity: 1;
+      }
+      .cta-input {
+        width: 95%;
+      }
+      .right-fontsize {
+        font-size: 1.2rem;
+      }
+      .link-color {
+        color: lightblue;
+      }
+      .link-color:hover {
+        color: blue;
+      }
+      .pt-10 {
+        padding-top: 7rem;
+      }
+      .insert-y-0 {
+        top: 0;
+        bottom: 0;
+      }
+      .block-8__li-icon {
+        color: #fff;
+        transform: scale(1.5);
+      }
+  </style>

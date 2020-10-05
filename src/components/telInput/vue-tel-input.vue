@@ -649,7 +649,7 @@ export default {
   display: inline-block;
   margin-right: 5px;
 }
-.vti__input {
+.asdfgs {
   border: none;
   border-radius: 0 2px 2px 0;
   width: 100%;
