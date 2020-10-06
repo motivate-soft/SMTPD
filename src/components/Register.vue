@@ -1,7 +1,7 @@
 <template>
   <form
     v-on:submit.prevent
-    class="cta-input mt-4 mb-2 p-0"
+    class="cta-input ml-4 mt-4 mb-2 p-0"
     style="border-style: none;"
   >
     <div id="input-list">

@@ -1,7 +1,6 @@
 <template>
   <!--7. FAQ ==================================== -->
   <div id="faq" class="block-39 space-between-blocks py-0 insert-y-0">
-    <div class="container">
       <div class="row">
         <div class="col-lg-6 px-0" style="background: white;">
           <div class="content-block">
@@ -9,11 +8,11 @@
               <div class="container">
                 <div class="row flex-row-reverse">
                   <div class="col-lg-12 px-5 px px-xl-5 py-5 text-left">
-                    <img src="./assets/mark.png" class="pb-5">
-                    <h4 class="content-block__title mb-0">
+                    <img src="./assets/mark.png" class="pb-5 ml-4">
+                    <h4 class="content-block__title mb-0  ml-4">
                       Get started free
                     </h4>
-                    <p class="hero__paragraph" style="width: 100%;">
+                    <p class="hero__paragraph  ml-4" style="width: 100%;">
                       No Credit Card Required
                     </p>
                     <Register />
@@ -56,7 +55,7 @@
           </div>
         </div>
       </div>
-    </div>
+
   </div>
 </template>
 
@@ -85,7 +84,7 @@ export default {
         border-bottom: 2px solid grey !important;
       }
       .background-color {
-        background: #7540ee;
+        background: #5e22e6;
       }
       .block__paragraph {
         font-size: 1.1rem;
