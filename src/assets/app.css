@@ -18,6 +18,16 @@
 body {
   font-family: 'Poppins', sans-serif;
   color: var(--text-primary);
+
+}
+
+.appMain {
+  width: 100%; 
+  height: 100%; 
+  position: fixed; 
+  left: 0px; 
+  top: 0px; 
+  overflow-y: auto;
 }
 
 .space-between-blocks {
@@ -1160,7 +1170,7 @@ button:focus {
 .content-block {
   text-align: initial;
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  
 }
 
 .content-block__title {

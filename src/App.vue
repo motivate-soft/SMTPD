@@ -1,12 +1,12 @@
 <template>
   <!--7. FAQ ==================================== -->
-  <div id="faq" class="block-39 space-between-blocks py-0 insert-y-0">
-      <div class="row">
+  <div id="faq" style="height:100%;" class="block-39 space-between-blocks py-0 insert-y-0">
+    <div class="container-fluid" style="height:100%;">
+      <div class="row" style="height:100%;">
         <div class="col-lg-6 px-0" style="background: white;">
           <div class="content-block">
             <div id="newsletter" class="block-30 space-between-blocks py-0">
-              <div class="container">
-                <div class="row flex-row-reverse">
+                <div class="row flex-row-reverse" style="width:90%;max-width:800px;float:right;margin-right:1rem" >
                   <div class="col-lg-12 px-5 px px-xl-5 py-5 text-left">
                     <img src="./assets/mark.png" class="pb-5 ml-4">
                     <h4 class="content-block__title mb-0  ml-4">
@@ -21,17 +21,13 @@
                       <span><a href="javascript:void(0)">Log in</a></span>
                     </p>
                   </div>
-                </div>
               </div>
             </div>
           </div>
         </div>
-        <div
-          class="col-lg-6 px-0 background-color  d-flex"
-          style="align-items:center"
-        >
+        <div class="col-lg-6 px-0 background-color  d-flex">
           <div class="content-block">
-            <div class="content-block">
+            <div class="content-block" style="margin-top:16rem">
               <!--3. Features 2 =================================== -->
               <div
                 id="features"
@@ -55,7 +51,7 @@
           </div>
         </div>
       </div>
-
+    </div>
   </div>
 </template>
 
