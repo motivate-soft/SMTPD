@@ -16,7 +16,7 @@
                       No Credit Card Required
                     </p>
                     <Register />
-                    <p class="block__paragraph mt-4">
+                    <p class="block__paragraph ml-4 mt-4">
                       Already have an account?
                       <span><a href="javascript:void(0)">Log in</a></span>
                     </p>
